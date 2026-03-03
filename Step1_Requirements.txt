@@ -1,0 +1,13 @@
+AI-Enriched Corporate Training Catalog - System Requirements
+
+Business Objective: Reduce employee onboarding friction by centralizing disparate training data silos into a single, highly searchable index, while strictly adhering to data minimization governance policies.
+
+• Users can search both internal and external Course Data by keywords and phrases found in descriptions to quickly locate relevant training.
+• Users can filter Course Data based on quantitative criteria, such as rating and duration, to optimize their training schedules.
+• Users can facet Course Data by role, product, and level to perform self-serve skill-gap analysis.
+• Users can sort search results by relevant fields such as popularity or duration.
+• Users can view enriched instructor details for internal Moodle courses. (Governance note: Only strictly necessary metadata from MoodleInstructorProfiles.json is extracted and indexed).
+• Users can search a curated library of open-access journal articles (PDFs) by author, institution, and keyword.
+• Users can access the DOI (Digital Object Identifier) URL for the PDF files directly within the search results.
+• Users can filter research papers by enriched metadata including publication name, publisher, and publication date.
+• Users can dynamically filter for premium content using a custom SelectCourses boolean flag that identifies highly-rated internal training.

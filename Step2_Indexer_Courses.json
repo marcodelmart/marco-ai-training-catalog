@@ -1,0 +1,21 @@
+{
+  "@odata.context": "https://marco-ai-search-2026.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8DE7929A4DC3871\"",
+  "name": "courses-indexer",
+  "description": "",
+  "dataSourceName": "courses-data",
+  "skillsetName": null,
+  "targetIndexName": "courses-index",
+  "disabled": null,
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": 0,
+    "maxFailedItemsPerBatch": 0,
+    "configuration": {}
+  },
+  "fieldMappings": [],
+  "outputFieldMappings": [],
+  "cache": null,
+  "encryptionKey": null
+}

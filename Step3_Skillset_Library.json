@@ -1,0 +1,53 @@
+{
+  "name": "library-skillset",
+  "description": "Extracts text/entities and calls the Springer API for publication metadata.",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
+      "name": "#1",
+      "context": "/document/normalized_images/*",
+      "lineEnding": "Space",
+      "defaultLanguageCode": "en",
+      "detectOrientation": true,
+      "inputs": [
+        { "name": "image", "source": "/document/normalized_images/*" }
+      ],
+      "outputs": [
+        { "name": "text", "targetName": "text" }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.MergeSkill",
+      "name": "#2",
+      "context": "/document",
+      "insertPreTag": " ",
+      "insertPostTag": " ",
+      "inputs": [
+        { "name": "text", "source": "/document/content" },
+        { "name": "itemsToInsert", "source": "/document/normalized_images/*/text" },
+        { "name": "offsets", "source": "/document/normalized_images/*/textOffset" }
+      ],
+      "outputs": [
+        { "name": "mergedText", "targetName": "merged_content" }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+      "name": "springer-api-lookup",
+      "context": "/document",
+      "uri": "https://marco-springer-api-2026.azurewebsites.net/api/SpringerLookup",
+      "httpMethod": "POST",
+      "timeout": "PT30S",
+      "batchSize": 1,
+      "inputs": [
+        { "name": "ArticleName", "source": "/document/metadata_storage_name" }
+      ],
+      "outputs": [
+        { "name": "PublicationName", "targetName": "PublicationName" },
+        { "name": "Publisher", "targetName": "Publisher" },
+        { "name": "DOI", "targetName": "DOI" },
+        { "name": "PublicationDate", "targetName": "PublicationDate" }
+      ]
+    }
+  ]
+}

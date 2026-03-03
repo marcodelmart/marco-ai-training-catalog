@@ -1,0 +1,72 @@
+{
+  "@odata.context": "https://marco-ai-search-2026.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8DE7926AB5B5464\"",
+  "name": "library-indexer",
+  "description": "",
+  "dataSourceName": "library-data",
+  "skillsetName": "azureblob-skillset",
+  "targetIndexName": "library-index",
+  "disabled": null,
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": 0,
+    "maxFailedItemsPerBatch": 0,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "parsingMode": "default",
+      "imageAction": "generateNormalizedImages"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "metadata_storage_path",
+      "mappingFunction": {
+        "name": "base64Encode",
+        "parameters": {
+          "useHttpServerUtilityUrlTokenEncode": false
+        }
+      }
+    }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/merged_content/people",
+      "targetFieldName": "people",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/merged_content/organizations",
+      "targetFieldName": "organizations",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/merged_content/locations",
+      "targetFieldName": "locations",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/merged_content/keyphrases",
+      "targetFieldName": "keyphrases",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/merged_content",
+      "targetFieldName": "merged_content",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/text",
+      "targetFieldName": "text",
+      "mappingFunction": null
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/layoutText",
+      "targetFieldName": "layoutText",
+      "mappingFunction": null
+    }
+  ],
+  "cache": null,
+  "encryptionKey": null
+}
